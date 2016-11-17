@@ -17,6 +17,8 @@ E:\collaboration\Qeep\src\main\java\com\qeepchat\model\JobApplication.java
 E:\collaboration\Qeep\src\main\java\com\qeepchat\service\FriendService.java
 E:\collaboration\Qeep\src\main\java\com\qeepchat\model\Event.java
 E:\collaboration\Qeep\src\main\java\com\qeepchat\dao\BlogDAO.java
+E:\collaboration\Qeep\src\main\java\com\qeepchat\model\Message.java
+E:\collaboration\Qeep\src\main\java\com\qeepchat\controller\ChatController.java
 E:\collaboration\Qeep\src\main\java\com\qeepchat\dao\EventDAOImpl.java
 E:\collaboration\Qeep\src\main\java\com\qeepchat\controller\EventController.java
 E:\collaboration\Qeep\src\main\java\com\qeepchat\dao\BlogDAOImpl.java
@@ -24,6 +26,8 @@ E:\collaboration\Qeep\src\main\java\com\qeepchat\controller\QeepController.java
 E:\collaboration\Qeep\src\main\java\com\qeepchat\service\EventService.java
 E:\collaboration\Qeep\src\main\java\com\qeepchat\controller\BlogController.java
 E:\collaboration\Qeep\src\main\java\com\qeepchat\model\BaseDomain.java
+E:\collaboration\Qeep\src\main\java\com\qeepchat\model\ChatForum.java
+E:\collaboration\Qeep\src\main\java\com\qeepchat\model\OutputMessage.java
 E:\collaboration\Qeep\src\main\java\com\qeepchat\model\Job.java
 E:\collaboration\Qeep\src\main\java\com\qeepchat\controller\JobController.java
 E:\collaboration\Qeep\src\main\java\com\qeepchat\service\UserService.java

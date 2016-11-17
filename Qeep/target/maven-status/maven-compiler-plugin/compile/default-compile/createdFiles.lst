@@ -1,5 +1,6 @@
 com\qeepchat\model\Event.class
 com\qeepchat\model\Friend.class
+com\qeepchat\model\ChatForum.class
 com\qeepchat\service\BlogService.class
 com\qeepchat\model\Blog.class
 com\qeepchat\model\User.class
@@ -12,6 +13,7 @@ com\qeepchat\dao\JobDAOImpl.class
 com\qeepchat\model\JobApplication.class
 com\qeepchat\service\UserService.class
 com\qeepchat\controller\BlogController.class
+com\qeepchat\model\OutputMessage.class
 com\qeepchat\controller\FriendController.class
 com\qeepchat\dao\JobDAO.class
 com\qeepchat\model\Job.class
@@ -20,8 +22,10 @@ com\qeepchat\controller\QeepController.class
 com\qeepchat\controller\EventController.class
 com\qeepchat\dao\UserDAOImpl.class
 com\qeepchat\dao\EventDAOImpl.class
+com\qeepchat\controller\ChatController.class
 com\qeepchat\model\Forum.class
 com\qeepchat\dao\FriendDAOImpl.class
 com\qeepchat\dao\UserDAO.class
 com\qeepchat\dao\FriendDAO.class
+com\qeepchat\model\Message.class
 com\qeepchat\dao\BlogDAO.class

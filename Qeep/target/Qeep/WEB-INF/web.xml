@@ -24,5 +24,8 @@
  <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 </listener>
+<absolute-ordering>
+        <name>spring_web</name>
+    </absolute-ordering>
 	
 </web-app>

@@ -27,6 +27,12 @@ app.config(function($routeProvider){
          templateUrl: 'resources/blog.jsp',
         
      })
+     
+     .when('/chat', {
+         controller: 'ChatController',
+         templateUrl: 'resources/chat.jsp',
+        
+     })
      .when('/event', {
          controller: 'EventController',
          templateUrl: 'resources/event.jsp',

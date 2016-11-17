@@ -25,11 +25,11 @@
         <ul class="dropdown-menu">
           <li><a href="#/blog">Add Blog</a></li>
           <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
+          <li><a href="#"></a></li>
         </ul>
       </li>
       <li><a href="#/event">Event</a></li>
-      <li><a href="#"></a></li>
+      <li><a href="#/chat">ChatForum</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
     <div ng-show="currentUser"></div>
@@ -48,13 +48,17 @@
 <script src="resources/js/angular-resource.min.js"></script>
 <script src="resources/js/angular-route.js"></script>
 <script src="resources/js/angular-cookies.js"></script>
+<script src="resources/js/sockjs.js"></script>
+<script src="resources/js/stomp.js"></script>
 
 <script src="resources/js/app.js"></script>
 <script src="resources/js/UserController.js"></script>
 <script src="resources/js/HomeController.js"></script>
+<script src="resources/js/ChatController.js"></script>
 <script src="resources/js/BlogController.js"></script>
 <script src="resources/js/EventController.js"></script>
 <script src="resources/js/UserService.js"></script> 
+<script src="resources/js/ChatService.js"></script> 
 
  
 </body>
