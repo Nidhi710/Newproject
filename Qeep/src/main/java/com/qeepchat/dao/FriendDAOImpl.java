@@ -54,7 +54,7 @@ public class FriendDAOImpl implements FriendDAO {
 	}
 
 	public List<Friend> getNewFriendRequests(int id) {
-		String hql ="from Friends where id="+"'"+id+"' and status='"+"N'";
+		String hql ="from Friend where id="+"'"+id+"'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Friend> list= (List<Friend>) query.list();

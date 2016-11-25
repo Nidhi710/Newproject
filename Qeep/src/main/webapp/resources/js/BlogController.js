@@ -1,5 +1,5 @@
 'use strict';
-/*var app = angular.module('app', ['ngResource']);*/
+
 app.factory('Blog', ['$resource', function ($resource) {
     return $resource('http://localhost:8070/Qeep/blog/:c_id', {c_id: '@c_id'},
 	{
@@ -17,6 +17,8 @@ app.controller('BlogController', ['$scope', 'Blog', function($scope, Blog) {
     ob.fetchAllBlogs();
     ob.createBlog = function(){
         ob.blog.$save(function(){
+        	ob.flag= 'created';	
+   	        ob.reset();	
             ob.fetchAllBlogs();
         });
     };

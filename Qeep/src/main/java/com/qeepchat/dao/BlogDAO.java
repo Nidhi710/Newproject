@@ -12,4 +12,5 @@ public interface BlogDAO {
 	Blog getBlogById(int c_id);
 	void update(Blog blog);
     void delete(int c_id);
+    public Blog getView(int c_id);
 }

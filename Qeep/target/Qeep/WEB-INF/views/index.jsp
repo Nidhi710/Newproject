@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html >
 <html ng-app="app">
  <head>
@@ -20,23 +21,44 @@
       <a class="navbar-brand" href="#">WebSiteName</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#/blog">Blog <span class="caret"></span></a>
+      <li class="active"><a href="#/">Home</a></li>
+      <!-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#/blog">Blog <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#/blog">Add Blog</a></li>
           <li><a href="#">Page 1-2</a></li>
           <li><a href="#"></a></li>
         </ul>
-      </li>
+      </li> -->
+      <li><a href="#/blog">Blog</a></li>
       <li><a href="#/event">Event</a></li>
       <li><a href="#/chat">ChatForum</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-    <div ng-show="currentUser"></div>
-      <li><a href="#/user"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <button href="#/logout" type="button" class="btn" data-color="info" tabindex="7">Logout</button>
-     <!--  <li><a href="#/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li> -->
+    <div ng-show="currentUser !== null">
+    <div ng-hide=="currentUser !== null">
+      <!-- <li><a href="#/user"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
+      <div ng-controller="HomeController as homeCtrl">
+      {{currentUser.userName}}
+       <!-- <div ng-hide=="currentUser !=null">  --> 
+      <div ng-if="currentUser.userName == null">
+      <c:if test="${currentUserName == null}">
+     <!--  <li ><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+      <button type="submit" class="btn btn-primary" href="#/login"> Login</button>
+      </c:if>
+      </div>
+      </div>
+      </div>
+      <div ng-controller="UserController as userCtrl">
+      <div ng-controller="HomeController as homeCtrl">
+      
+       <!-- <div ng-hide=="currentUser !=null">  --> 
+      <div ng-hide="currentUser.userName != null">
+      <c:if test="${currentUserName != null}">
+      <button type="submit" class="btn btn-primary" ng-click="userCtrl.logout()"> Logout</button>
+      </c:if>
+      </div> 
+      </div>
+     </div>
     </ul>
   </div>
 </nav>
@@ -49,7 +71,8 @@
 <script src="resources/js/angular-route.js"></script>
 <script src="resources/js/angular-cookies.js"></script>
 <script src="resources/js/sockjs.js"></script>
-<script src="resources/js/stomp.js"></script>
+<script src="resources/js/stomp.min.js"></script>
+
 
 <script src="resources/js/app.js"></script>
 <script src="resources/js/UserController.js"></script>

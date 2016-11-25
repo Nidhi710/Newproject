@@ -17,6 +17,8 @@ app.controller('BlogController', ['$scope', 'Blog', function($scope, Blog) {
     ob.fetchAllBlogs();
     ob.createBlog = function(){
         ob.blog.$save(function(){
+        	ob.flag= 'created';	
+   	        ob.reset();	
             ob.fetchAllBlogs();
         });
     };

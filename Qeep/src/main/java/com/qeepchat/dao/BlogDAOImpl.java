@@ -70,4 +70,18 @@ public class BlogDAOImpl implements BlogDAO {
 		sessionFactory.getCurrentSession().delete(BlogToDelete);
 		
 	}
+public Blog getView(int c_id) {
+		
+		String hql = "from Product where c_id=" + "'"+ c_id +"'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		@SuppressWarnings("unchecked")
+		List<Blog> listBlog = (List<Blog>) query.list();
+		
+		if (listBlog != null && !listBlog.isEmpty()) {
+			return listBlog.get(0);
+		}
+		
+		return null;
+	}
 }

@@ -17,6 +17,8 @@ app.controller('EventController', ['$scope', 'Event', function($scope, Event) {
     ob.fetchAllEvents();
     ob.createEvent = function(){
         ob.event.$save(function(){
+        	ob.flag= 'created';	
+   	        ob.reset();	
             ob.fetchAllEvents();
         });
     };

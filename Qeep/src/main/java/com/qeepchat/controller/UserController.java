@@ -74,9 +74,13 @@ public class UserController {
 			session.setAttribute("loggedInUser",user);
 			session.setAttribute("loggedInUserId",user.getId());
 			System.out.println("username is"+user.getUsername());
+			
+			String currentUserName=user.getName();
+			session.setAttribute("currentUserName", currentUserName);
+			
 			System.out.println("password is"+user.getPassword());
 			friendService.setOnline(user.getId());
-			userService.setOnline(user.getId());
+			
 		}
 		return new ResponseEntity<User>(user,HttpStatus.OK);
 	}

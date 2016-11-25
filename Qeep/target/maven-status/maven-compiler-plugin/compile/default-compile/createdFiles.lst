@@ -23,7 +23,6 @@ com\qeepchat\controller\EventController.class
 com\qeepchat\dao\UserDAOImpl.class
 com\qeepchat\dao\EventDAOImpl.class
 com\qeepchat\controller\ChatController.class
-com\qeepchat\model\Forum.class
 com\qeepchat\dao\FriendDAOImpl.class
 com\qeepchat\dao\UserDAO.class
 com\qeepchat\dao\FriendDAO.class

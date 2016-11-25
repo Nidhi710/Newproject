@@ -51,5 +51,9 @@ public void setUser(User user) {
 	this.user = user;
 }
 
-
+public String toString()
+{
+	return "{c_id :'"+c_id+"',"+"id : '" + id + "'," + "c_title : '" + c_title + "'," + "c_desc :'" + c_desc + "'}";
+	/*return "{subcat_id :'"+subcat_id+"',"+"id : '" + id + "'," + "name : '" + name + "'," + "desc :'" + desc + "',qty : '" + qty + "',price : '" + price + "',sup_id :'"+sup_id+"'}";*/
+}
 }

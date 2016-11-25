@@ -20,7 +20,7 @@ xsi:schemaLocation="
     </websocket:handlers> -->
     
      <websocket:message-broker application-destination-prefix="/app">
-    <websocket:stomp-endpoint path="/ws">
+    <websocket:stomp-endpoint path="/chat">
       <websocket:sockjs/>
       
     </websocket:stomp-endpoint>

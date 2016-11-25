@@ -12,7 +12,11 @@ app.factory('UserService', ['$http', '$q','$rootScope', function($http, $q, $roo
 					function(response){
 						return response.data;
 					},
-					null
+					function(errResponse){
+						console.error('Error while logging out')
+						return $q.reject(errMessage);
+						
+					}
 				);
 			},
 

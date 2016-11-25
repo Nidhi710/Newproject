@@ -19,6 +19,8 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
       
     self.createUser = function(){
         self.user.$save(function(){
+        	self.flag= 'created';	
+   	        self.reset();	
             self.fetchAllUsers();
         });
     };
@@ -84,10 +86,22 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
     self.login= function (){
     	{
     	console.log('Login Validation????????', self.user);
+    	
     	self.authenticate(self.user);
+    	
+    	
     }
     };
-   
+    self.logout = function(){
+    	$rootScope.currentUser = {};
+    	$cookieStore.remove('currentUser');
+
+    	console.log('calling the method logout of user service');
+    	UserService.logout()
+    	document.location.reload(true);
+    	$location.path('/');
+    	 
+    };
 
 
     self.authenticate = function(user){
@@ -114,20 +128,14 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
     					$http.defaults.headers.common['Authorization']= 'Basic'+$rootScope.currentUser;
     					$cookieStore.put(
     								'currentUser',$rootScope.currentUser);
+    					/*document.location.reload(true);*/
     					$location.path('/')
     				}
     			},
     			function(errResponse){
     				console.err('Error while authenticate Users');
     			});
-    	 self.logout = function(){
-    	    	$rootScope.currentUser = {};
-    	    	$cookieStore.remove('currentUser');
-    	    	
-    	    	console.log('calling the method logout of user service');
-    	    	UserService.logout()
-    	    	$location.path('/');	
-    	    };
+    	 
     }
    
 

@@ -38,5 +38,8 @@ public void delete(Integer c_id) {
 public Blog getBlogById(int c_id){
 	return blogDAO.getBlogById(c_id);
 }
+public Blog getView(int c_id){
+	return blogDAO.getView(c_id);
+}
 
 }

@@ -14,8 +14,10 @@
 <style>
 body{
 
-background-image:  url("resources/images/1896898630_e0496db999_b.jpg");
-}
+background-image:  url("resources/images/background-stripe-cream-v2.jpg");
+}.msg-val{
+  color : red;
+   };
 
 </style>   
   </head>
@@ -36,7 +38,7 @@ background-image:  url("resources/images/1896898630_e0496db999_b.jpg");
 		<div class="form-group">
 			<div class="col-xs-6 col-sm-6 col-md-6">
 				<label class="control-label" for="name">Title:</label> 
-		        <input type="text" class="form-control" name="c_title" ng-model="blogCtrl.blog.c_title" required/> 
+		        <input type="text" class="form-control" name="c_title" placeholder="Title" ng-model="blogCtrl.blog.c_title" required/> 
          	      <span ng-show="blogForm.c_title.$error.required" class="msg-val">Blog is required.</span> 
 			</div>
 		</div>
@@ -44,13 +46,13 @@ background-image:  url("resources/images/1896898630_e0496db999_b.jpg");
 		<div class="form-group">
 		<div class="col-xs-6 col-sm-6 col-md-6">
 				<label class=" control-label" for="comment">User Id:</label> 
-		       <input type="text"  class="form-control" name="id" ng-model="blogCtrl.blog.id" required/> 
+		       <input type="text"  class="form-control" name="id" placeholder="User Id" ng-model="blogCtrl.blog.id" required/> 
 	            <span ng-show="blogForm.id.$error.required" class="msg-val">Id is required.</span> 
 		</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-1 control-label" for="comment">Description:</label> 
-		  	<textarea type="textarea" class="form-control" rows="5" name="c_desc" ng-model="blogCtrl.blog.c_desc" required/> 
+		  	<textarea type="textarea" class="form-control" placeholder="Description" maxlength="140" rows="5" name="c_desc" ng-model="blogCtrl.blog.c_desc" required/> 
 	        <span ng-show="blogForm.c_desc.$error.required" class="msg-val">Description is required.</span> 
 		</div>
 		
@@ -79,20 +81,23 @@ background-image:  url("resources/images/1896898630_e0496db999_b.jpg");
 	<br>
 		<div class="container">
         <table class="table table-hover">
-	      <tr><th>Blog Id</th> 
-	          <th>Title</th> 
-	          <th>Description</th> 
-	          <th>User Id</th> 
-	          <th>Action</th>
+	      <tr><th width="20">Blog Id</th> 
+	          <th width="60">Title</th> 
+	          <th width="60">Description</th> 
+	          <th width="60">User Id</th> 
+	          <th width="60">Action</th>
 	      </tr>
 	      <tr ng-repeat="row in blogCtrl.blogs">
 	         <td><span ng-bind="row.c_id"></span></td>
 	         <td><span ng-bind="row.c_title"></span></td>
 	         <td><span ng-bind="row.c_desc"></span></td>
 	         <td><span ng-bind="row.id"></span></td>
+	         <td><a href="blogview{{row.c_id}}">View</a></td> 
 	         <td>
 		    <input type="button" class="w3-btn w3-indigo w3-round-xlarge" ng-click="blogCtrl.deleteBlog(row.c_id)" value="Delete"/>
 		    <input type="button" class="w3-btn w3-teal w3-round-large" ng-click="blogCtrl.edit(row.c_id)" value="Edit"/>
+		    <!-- <input type="button" class="w3-btn w3-teal w3-round-large" ng-click="blogCtrl.view(row.c_id)" value="View"/> -->  
+		     
 		    <span ng-if="blogCtrl.flag=='updated' && row.c_id==blogCtrl.updatedId" class="msg-success">Blog successfully updated.</span> </td> 
 	      </tr>	
 	</table>
