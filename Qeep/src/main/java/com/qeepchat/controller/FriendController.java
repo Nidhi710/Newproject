@@ -33,13 +33,13 @@ public class FriendController {
 		return new ResponseEntity<List<Friend>>(myFriends, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/addFriend/{friendId}", method = RequestMethod.GET )
+	@RequestMapping(value="/addFriend/{friendId}", method = RequestMethod.POST )
 	public ResponseEntity<Friend>  setFriendRequest(@PathVariable("friendId") int friendId,HttpSession session ) {
 		 int loggedInUserId =(Integer)session.getAttribute("loggedInUserId");
 		friend.setId(loggedInUserId);
 		friend.setFriendId(friendId);
 		friend.setStatus("N"); // N - New, R->Reject, A->Accept
-	    friend.setIsOnline('Y');
+	    friend.setIsOnline('N');
 		friendService.save(friend);
 		return new ResponseEntity<Friend> (friend,HttpStatus.OK);
 	}
@@ -47,9 +47,9 @@ public class FriendController {
 	@RequestMapping(value="/unFriend/{friendId}", method = RequestMethod.GET )
 	public ResponseEntity<Friend> unFriend(@PathVariable("friendId") int friendId,HttpSession session ) {
 		 int loggedInUserId =(Integer)session.getAttribute("loggedInUserId");
-		friend.setId(loggedInUserId);
+		/*friend.setId(loggedInUserId);*/
 		System.out.println("loggedInUserId is"+loggedInUserId);
-		friend.setFriendId(friendId);
+		friend.setFriendId(loggedInUserId);
 		
 		System.out.println("FriendId is="+friendId);
 		friend.setStatus("U");  // N - New, R->Reject, A->Accept
@@ -61,32 +61,36 @@ public class FriendController {
 	@RequestMapping(value="/rejectFriend/{friendId}", method = RequestMethod.GET )
 	public ResponseEntity<Friend>  rejectFriendRequest(@PathVariable("friendId") int friendId,HttpSession session ) {
 		 int loggedInUserId =(Integer)session.getAttribute("loggedInUserId");
-		friend.setId(loggedInUserId);
+		/*friend.setId(loggedInUserId);*/
 		
-		friend.setFriendId(friendId);
+		friend.setFriendId(loggedInUserId);
+		friend.setIsOnline('Y');
 		friend.setStatus("R"); // N - New, R->Reject, A->Accept
 		friendService.update(friend);
 		return new ResponseEntity<Friend> (friend,HttpStatus.OK);
 	}
-	@RequestMapping(value="/getMyFriendRequest/", method = RequestMethod.GET )
-	public ResponseEntity<Friend>  getMyFriendRequest(HttpSession session ) {
+	@RequestMapping(value="/getMyFriendRequests/", method = RequestMethod.GET )
+	public ResponseEntity<List<Friend>>  getMyFriendRequest(HttpSession session ) {
 		 int loggedInUserId =(Integer)session.getAttribute("loggedInUserId");
 		List<Friend> myFriendRequests=friendService.getNewFriendRequests(loggedInUserId);
-		return new ResponseEntity<Friend> (friend,HttpStatus.OK);
+		return new ResponseEntity<List<Friend>> (myFriendRequests,HttpStatus.OK);
 	}
 	@RequestMapping(value="/acceptFriend/{friendId}", method = RequestMethod.GET )
 	public ResponseEntity<Friend> acceptFriendRequest(@PathVariable("friendId") int friendId,HttpSession session ) {
-		updateRequest(friendId, "A", session);
+		 int loggedInUserId =(Integer)session.getAttribute("loggedInUserId");
+			/*friend.setId(loggedInUserId);*/
+			friend.setFriendId(loggedInUserId);
+			friend.setIsOnline('Y');
+			friend.setStatus("A");	// N - New, R->Reject, A->Accept
+			friendService.update(friend);
+			
 		return new ResponseEntity<Friend> (friend,HttpStatus.OK);
 	}
-	public void updateRequest(int f_Id, String status, HttpSession session)
+	@RequestMapping(value="/myFriend", method=RequestMethod.GET)
+	public ResponseEntity<List<Friend>> getMyFriend(HttpSession session)
 	{
-		int loggedInUserId =(Integer)session.getAttribute("loggedInUserId");
-		friend.setId(loggedInUserId);
-		friend.setF_Id(f_Id);
-		friend.setStatus(status);	// N - New, R->Reject, A->Accept
-		friendService.update(friend);
-		
-		
+		int loggedInUserId = (Integer)session.getAttribute("loggedInUserId");
+		List<Friend> myFriend = friendService.getMyFriend(loggedInUserId);
+		return new ResponseEntity<List<Friend>>(myFriend, HttpStatus.OK);
 	}
 }

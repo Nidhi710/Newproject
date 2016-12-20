@@ -21,12 +21,35 @@ app.config(function($routeProvider){
          templateUrl: 'resources/user.jsp',
          
      })
+     
 
      .when('/blog', {
          controller: 'BlogController',
          templateUrl: 'resources/blog.jsp',
         
      })
+     .when('/myProfile', {
+		controller : 'UserController',
+		templateUrl : 'resources/profile.jsp'
+	})
+     .when('/friend', {
+         controller: 'FriendController',
+         templateUrl: 'resources/viewfriend.jsp',
+        
+     })
+     .when('/friendrequest', {
+         controller: 'FriendController',
+         templateUrl: 'resources/friend.jsp',
+        
+     })
+     .when('/userinfo', {
+                controller: 'UserController',
+                templateUrl: 'resources/userinfo.jsp'
+            })
+      .when('/userlist', {
+                controller: 'UserController',
+                templateUrl: 'resources/userlist.jsp'
+            })
      
      .when('/chat', {
          controller: 'ChatController',
@@ -42,22 +65,34 @@ app.config(function($routeProvider){
      
      .otherwise({ redirectTo: '/' });
 })
-app.run(function ($rootScope, $location, $cookieStore, $http){
+app.run( function ($rootScope, $location,$cookieStore, $http){ 
 	
-	$rootScope.$on('$locationChangeStart', function(event, next, current){
-		console.log("$locationChangeStart")
-		// Redirect to login page if not logged in and trying to access a restricted page page
-		var restrictedPage= $.inArray($location.path(),['//','home','/','/login','/user'])===-1;
-		console.log("restrictedPage:"+restrictedPage);
-		var loggedIn=$rootScope.currentUser.id;
-		console.log("loggedIn:"+loggedIn)
-		if(restrictedPage & !loggedIn){
-			console.log("Navigation to login page:")
-			$location.path('/login');
-			
-		}
-	});
-	
+	$rootScope.$on('$locationChangeStart', function (event, next, current) {
+        // redirect to login page if not logged in and trying to access a restricted page
+        var restrictedPage = $.inArray($location.path(), ['/login','/bloglist']) === -1;
+        console.log("restrictedPage:" +restrictedPage)
+        var loggedIn = $rootScope.currentUser.id;
+        console.log("loggedIn:" +loggedIn)
+        if(!loggedIn)
+        	{
+        		if (restrictedPage) {
+        			console.log("Navigating to login page")
+        			$location.path('/login');
+        		}
+        	}
+        else
+        	{
+        		var role= $rootScope.currentUser.role;
+        		var userRestrictedPage=  $.inArray($location.path(), ['/userlist']) == 0;
+        		
+        		if(userRestrictedPage && role!='admin')
+        			{
+        				alert("You can not do this operation as you are logged as :" + role);
+        				$location.path('/');
+        			}
+        	}
+        
+    });
 
 
 // KEEP USER LOGGED IN AFTER PAGE REFRESH

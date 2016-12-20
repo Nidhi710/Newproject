@@ -18,19 +18,23 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="#"><img src="resources/images/icon-collaboration.png" width="40" height="30"  alt="Image"></a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#/">Home</a></li>
-      <!-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#/blog">Blog <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#/blog">Add Blog</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#"></a></li>
-        </ul>
-      </li> -->
+     <li><a href="#/userlist">UserList</a></li>
       <li><a href="#/blog">Blog</a></li>
+      
       <li><a href="#/event">Event</a></li>
+      <li><a href="#/userinfo">UserDetail</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Friend
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#/friend">Search</a></li>
+          <li><a href="#/friendrequest">GetFriend</a></li>
+        </ul>
+      </li> 
       <li><a href="#/chat">ChatForum</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -43,7 +47,8 @@
       <div ng-if="currentUser.userName == null">
       <c:if test="${currentUserName == null}">
      <!--  <li ><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
-      <button type="submit" class="btn btn-primary" href="#/login"> Login</button>
+     <!--  <button type="submit" class="btn btn-primary" href="/login"> Login</button> -->
+       <li><a href="#/login"><button type="submit" class="btn btn-primary"> Login</button></a></li>
       </c:if>
       </div>
       </div>
@@ -80,6 +85,8 @@
 <script src="resources/js/ChatController.js"></script>
 <script src="resources/js/BlogController.js"></script>
 <script src="resources/js/EventController.js"></script>
+<script src="resources/js/FriendController.js"></script> 
+<script src="resources/js/FriendService.js"></script> 
 <script src="resources/js/UserService.js"></script> 
 <script src="resources/js/ChatService.js"></script> 
 

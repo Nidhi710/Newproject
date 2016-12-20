@@ -23,7 +23,7 @@ background-image:  url("resources/images/yellow.jpg");
              
 		<form name="userForm"   ng-submit="userCtrl.login()" method="POST">	  	
 		  <div ng-if="userCtrl.flag != 'edit'">
-		     <!-- <h3 align=center> Please Login Here </h3> --> 
+		     
 		  </div>
 		  <div ng-if="userCtrl.flag == 'edit'">
 		     <h3> Update User for ID: {{ userCtrl.user.id }} </h3> 
@@ -50,7 +50,7 @@ background-image:  url("resources/images/yellow.jpg");
   				<label class="col-md- control-label" for="button"></label>
   					<div class="col-md-2">
 	            
-		       <input  type="submit" class="w3-btn w3-pink w3-round-xlarge"  ng-click="login()" value="Login"/> 
+		       <input  type="submit" class="w3-btn w3-pink w3-round-xlarge"  ng-click="userCtrl.user.login()" value="Login"/> 
 		      </div>
 		   </div>
 		</div>
@@ -65,7 +65,8 @@ background-image:  url("resources/images/yellow.jpg");
 		<div class="row">
 			<div class="col-sm-8">
 				<div class="login-main">
-					<h4><i class="fa fa-dashboard"></i> Gorgeous color and design</h4>
+				<img src="resources/images/social-economic-justice.png" alt="Flower">
+					<!-- <h4><i class="fa fa-dashboard"></i> Gorgeous color and design</h4>
 					<span>Some sample description text about the template goes here</span>
 
 					<h4> <i class="fa fa-money"></i> 100%  fully responsive </h4>
@@ -75,7 +76,7 @@ background-image:  url("resources/images/yellow.jpg");
 					<span>Yet another sample description text can be placed in one line</span>
 
 					<h4> <i class="fa fa-trophy"></i> Easy to use and custmize with mobile friendly and responsive</h4>
-					<span>Your last description text about your startup or business</span>
+					<span>Your last description text about your startup or business</span> -->
 				</div>
 			</div> 
 			 <div class="col-sm-4">

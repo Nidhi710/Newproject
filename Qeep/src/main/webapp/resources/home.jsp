@@ -22,19 +22,13 @@
   
 
 <body>
- <!-- <div ng-controller="HomeController as homeCtrl">
- <div ng-hide="currentUser==''">
-   Welcome:{{currentUser.username}}
-   role:{{currentUser.role}}
-</div>
-</div> -->
+ 
 
 <div id="section0" class="container-fluid">
   <div class="col-xs-17 col-md-8"> 
   <div ng-controller="HomeController as homeCtrl">
  <div ng-hide="currentUser==''">
-  <!--  Welcome:{{currentUser.username}}
-   role:{{currentUser.role}} -->
+  
 </div>
 <h3>welcome: ${currentUserName}</h3>
 </div>
@@ -47,11 +41,7 @@
  
 
 </br>
-
- <!-- <img src="resources/images/camera-shiraz-md.png" alt="Flower">
- <img src="resources/images/hand-holding-a-mobile_459-99.jpg" alt="Flower"> -->
-
-     
+    
 </div>  
 </div>
 

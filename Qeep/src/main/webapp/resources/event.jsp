@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"> 
    <style>
    body{
-background-image:  url("resources/images/graphic-white-wallppaer-background-design.jpg");
+background-image:  url("resources/images/e1714a3aa5e4f318c48727ed68cef69c.jpg");
    
   } 
   .msg-val{
@@ -85,7 +85,7 @@ background-image:  url("resources/images/graphic-white-wallppaer-background-desi
 				  <label class="control-label" for=""></label>
 	            <div ng-if="eventCtrl.flag != 'edit'">
 		       <input  type="submit" class="w3-btn w3-pink w3-round-xlarge" ng-click="eventCtrl.createEvent()" value="Add Event"/> 
-		       <input type="button" ng-click="eventCtrl.reset()" value="Reset"/>
+		       <!-- <input type="button" ng-click="eventCtrl.reset()" value="Reset"/> -->
 		    </div>
 		    <div ng-if="eventCtrl.flag == 'edit'">
 		       <input  type="submit" class="w3-btn w3-red w3-round-xlarge" ng-click="eventCtrl.updateEventDetail()" value="Update Event"/> 	
@@ -105,7 +105,7 @@ background-image:  url("resources/images/graphic-white-wallppaer-background-desi
 	          <th>Name</th> 
 	          <th>Venue</th> 
 	          <th>Description</th> 
-	          <th>Date&Time</th>
+	          <th>Date</th>
 	          <th>Action</th>
 	      </tr>
 	      <tr ng-repeat="row in eventCtrl.events">

@@ -1,5 +1,5 @@
 'use strict';
-/*var app = angular.module('myApp', ['ngResource']);*/
+
 app.factory('User', ['$resource', function ($resource) {
     return $resource('http://localhost:8070/Qeep/user/:id', {id: '@id'},
 	{
@@ -9,14 +9,26 @@ app.factory('User', ['$resource', function ($resource) {
 }]);
 app.controller('UserController', ['$http','$scope','$cookieStore','User','UserService','$location','$rootScope',function($http,$scope,$cookieStore,User, UserService,$location, $rootScope)  {
     var self = this;
-    self.user= new User();
-     
-    self.users=[];
-         
+    self.user= new User();    
+    self.users=[];         
     self.fetchAllUsers = function(){
         self.users = User.query();
     };
       
+self.getSelectedUser = myProfile
+    
+    function myProfile(){
+        console.log("MyProfile...")
+    	UserService.myProfile()
+    	.then(
+    			function(d){
+   				self.user = d;
+   				$location.
+   				path("/myProfile");
+   			},function(errResponse){
+   				console.error('Error while fetch profile');
+    	});
+    };
     self.createUser = function(){
         self.user.$save(function(){
         	self.flag= 'created';	
@@ -78,7 +90,7 @@ app.controller('UserController', ['$http','$scope','$cookieStore','User','UserSe
     };
 
      
-    self.reset = function(){
+   self.reset = function(){
         self.user= new User();
         $scope.myForm.$setPristine(); //reset Form
     };

@@ -1,5 +1,5 @@
 'use strict';
-/*var app = angular.module('app', ['ngResource']);*/
+
 app.factory('Blog', ['$resource', function ($resource) {
     return $resource('http://localhost:8070/Qeep/blog/:c_id', {c_id: '@c_id'},
 	{

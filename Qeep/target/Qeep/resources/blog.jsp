@@ -79,23 +79,39 @@ background-image:  url("resources/images/background-stripe-cream-v2.jpg");
 	    </table>     
 	</form>
 	<br>
-		<div class="container">
-        <table class="table table-hover">
-	      <tr><th width="20">Blog Id</th> 
-	          <th width="60">Title</th> 
-	          <th width="60">Description</th> 
-	          <th width="60">User Id</th> 
-	          <th width="60">Action</th>
+		<div class="panel panel-danger filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">Blog List</h3>
+                <div class="pull-right">
+                    
+                </div>
+            </div>
+            
+            <table class="table table-hover">
+            <thead>
+           <!--  <tr class="filters"> -->
+	      <tr>
+	      <th width="60">Blog ID </th>
+                        <th width="120">Title</th>
+                        <th width="120"> Description</th>
+                        <th width="60">User Id</th>
+                        <th width="60">View</th>
+                        <th width="60">Delete</th>
+                        <th width="60">Edit</th>
+	            
 	      </tr>
+	      </thead>
 	      <tr ng-repeat="row in blogCtrl.blogs">
 	         <td><span ng-bind="row.c_id"></span></td>
 	         <td><span ng-bind="row.c_title"></span></td>
 	         <td><span ng-bind="row.c_desc"></span></td>
 	         <td><span ng-bind="row.id"></span></td>
+	         <td><a href="blogview{{row.c_id}}"><button type="submit" class="btn btn-primary">View</button></a></td> 
 	         <td>
-		    <input type="button" class="w3-btn w3-indigo w3-round-xlarge" ng-click="blogCtrl.deleteBlog(row.c_id)" value="Delete"/>
-		    <input type="button" class="w3-btn w3-teal w3-round-large" ng-click="blogCtrl.edit(row.c_id)" value="Edit"/>
-		    <input type="button" class="w3-btn w3-teal w3-round-large" ng-click="blogCtrl.view(row.c_id)" value="View"/> 
+		    <input type="button" class="w3-btn w3-indigo  w3-small" ng-click="blogCtrl.deleteBlog(row.c_id)" value="Delete"/></td>
+		    <td><input type="button" class="w3-btn w3-teal w3-round-small" ng-click="blogCtrl.edit(row.c_id)" value="Edit"/></td>
+		   
+		     
 		    <span ng-if="blogCtrl.flag=='updated' && row.c_id==blogCtrl.updatedId" class="msg-success">Blog successfully updated.</span> </td> 
 	      </tr>	
 	</table>

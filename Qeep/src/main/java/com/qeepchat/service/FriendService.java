@@ -12,31 +12,42 @@ import com.qeepchat.model.Friend;
 @Service
 @Transactional
 public class FriendService {
-	@Autowired(required=true)
+	@Autowired (required=true)
 	FriendDAOImpl friendDAO;
 	
-	public boolean save(Friend friend) {
-		friendDAO.save(friend);
-		return true;
+	public boolean save(Friend friend){
+		return friendDAO.save(friend);
 	}
-	public void update(Friend friend){
-		friendDAO.update(friend);
-		
+
+	public boolean update(Friend friend){
+		return friendDAO.update(friend);
 	}
 	
-	public void delete(int id,int friendId){
-		friendDAO.delete(id, friendId);
+	public void delete(int id, int f_Id) {
+		friendDAO.delete(id, f_Id);
 	}
-	public List<Friend> getNewFriendRequests(int id){
-		return friendDAO.getNewFriendRequests(id);
+	
+	public Friend get(int id, int  friendId) {
+		return friendDAO.get(id, friendId);
 	}
-	 public void setOnline(int id){
-		 friendDAO.setOnline(id);
-	 }
-	 public void setOffline(int id){
-		 friendDAO.setOffline(id);
-	 }
-	 public List<Friend> getMyFriends(int id){
-		 return friendDAO.getMyFriends(id);
-	 }
+	
+	public List<Friend> getMyFriends(int id) {
+		return friendDAO.getMyFriends(id);
+	}
+
+	public List<Friend> getNewFriendRequests(int friendId) {
+		return friendDAO.getNewFriendRequests(friendId);
+	}
+	
+	public void setOnline(int friendId) {
+		friendDAO.setOnline(friendId);
+	}
+	
+	public void setOffLine(int friendId) {
+		friendDAO.setOffLine(friendId);
+	}
+	
+	public List<Friend> getMyFriend(int friendId) {
+	return friendDAO.getMyFriend(friendId);
+	}
 }
