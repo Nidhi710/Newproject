@@ -30,19 +30,8 @@ public class QeepController {
 		return"index";
 	}
 	
-	@RequestMapping("/friend")
-	public String getfriend(){
-		return"friend";
-	}
-	@RequestMapping("/friend1")
-	public String getfriend1(){
-		return"friend1";
-	}
 	
-	@RequestMapping("/aa")
-	public String getaa(){
-		return"aa";
-	}
+	
 	
 	 @RequestMapping("/blogview{c_id}")
 	    public String view(@PathVariable("c_id")int c_id, Model model){

@@ -21,7 +21,7 @@ public class User extends BaseDomain {
 	private String role;
 	private String username;
 	private String password;
-	private char isOnline;
+	/*private char isOnline;*/
 	@Transient
 	private MultipartFile img;
 	
@@ -81,12 +81,12 @@ public class User extends BaseDomain {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public char getIsOnline() {
+	/*public char getIsOnline() {
 		return isOnline;
 	}
 	public void setIsOnline(char isOnline) {
 		this.isOnline = isOnline;
-	}
+	}*/
 	
 	public String toString()
 	{

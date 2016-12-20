@@ -19,12 +19,13 @@ import com.qeepchat.service.FriendService;
 
 @RestController
 public class FriendController {
- @Autowired(required=true)
- FriendService friendService;
- @Autowired(required=true)
- Friend friend;
- 
- @RequestMapping(value="/myFriends", method = RequestMethod.GET )
+	@Autowired (required=true)
+	private FriendService friendService;
+	
+	@Autowired
+	Friend friend;
+	
+	@RequestMapping(value="/myFriends", method = RequestMethod.GET )
 	public ResponseEntity<List<Friend>> getMyFriends(HttpSession session) {
 		
 		 int loggedInUserId =(Integer)session.getAttribute("loggedInUserId");
