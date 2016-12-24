@@ -13,4 +13,5 @@ public interface UserDAO {
     void delete(int id);
     User authenticate(String username, String password);
     public void setOnline(int id);
+    public void setOffline(int id);
 }

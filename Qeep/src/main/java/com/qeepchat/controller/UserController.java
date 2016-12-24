@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.http.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -12,9 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qeepchat.model.User;
 import com.qeepchat.service.FriendService;
 import com.qeepchat.service.UserService;
@@ -58,6 +62,16 @@ public class UserController {
 		User user = userService.getUserById(id);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/myProfile", method=RequestMethod.GET)
+	public ResponseEntity<User> myProfile(HttpSession session)
+	{
+		int loggedInUserID = (Integer)session.getAttribute("loggedInUserId");
+		User user=userService.getUserById(loggedInUserID);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+	
+
 	@RequestMapping(value="/user/authenticate/",method= RequestMethod.POST)
 	public ResponseEntity<User> authenticate(@RequestBody User user,HttpSession session){
 		user = userService.authenticate(user.getUsername(),user.getPassword());
@@ -89,7 +103,8 @@ public class UserController {
 	public String logout(HttpSession session){
 		@SuppressWarnings("unused")
 		int loggedInUserID =(Integer)session.getAttribute("loggedInUserId");
-	/*userService.setOffLine(loggedInUserID);*/
+		/*friendService.setOffline(loggedInUserID);*/
+		userService.setOffline(loggedInUserID);
 	session.invalidate();
 	return ("You successfully loggedout");
 	}

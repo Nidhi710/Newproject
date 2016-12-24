@@ -70,7 +70,7 @@ public class BlogDAOImpl implements BlogDAO {
 		sessionFactory.getCurrentSession().delete(BlogToDelete);
 		
 	}
-public Blog getView(int c_id) {
+  public Blog getView(int c_id) {
 		
 		String hql = "from Product where c_id=" + "'"+ c_id +"'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);

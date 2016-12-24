@@ -44,4 +44,8 @@ public User authenticate(String username, String password){
 public void setOnline(int id){
 	 userDAO.setOnline(id);
 }
+public void setOffline(int id)
+{
+	userDAO.setOffline(id);
+}
 }

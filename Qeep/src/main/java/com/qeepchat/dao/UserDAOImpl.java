@@ -106,5 +106,10 @@ public class UserDAOImpl implements UserDAO {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.executeUpdate();
 	}
+	public void setOffline(int id) {
+		String hql="UPDATE User SET isOnline = 'N' where id='" + id + "'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.executeUpdate();	
+	}
 
 }

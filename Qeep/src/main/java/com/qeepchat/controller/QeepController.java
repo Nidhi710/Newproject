@@ -41,7 +41,7 @@ public class QeepController {
 	    	return "viewblog";
 	    }
 
-	 @RequestMapping(value= "/user/add")
+	 /*@RequestMapping(value= "/user/add")
 		public String addUser(@ModelAttribute("user") User user ,HttpServletRequest request){
 		
 			
@@ -60,7 +60,7 @@ public class QeepController {
 			}	
 			
 			return "redirect:/user";
-			}
+			}*/
 }
 
 
