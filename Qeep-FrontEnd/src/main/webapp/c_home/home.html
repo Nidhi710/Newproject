@@ -39,6 +39,9 @@ Welcome: {{currentUser.username}}
 </div>
 </div>
 </div>
+<div ng-controller="UserController as ctr">
+<input type="submit" class="w3-btn  w3-deep-purple w3-border w3-border-blue w3-round-xlarge"  ng-click="ctr.getSelectedUser()" value="My Profile"/>
+</div>
   </div> 
   
 </div>

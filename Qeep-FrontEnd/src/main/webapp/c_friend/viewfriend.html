@@ -3,13 +3,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <title>Insert title here</title>
 </head>
 <body>
 <div class="container" ng-controller="FriendController as ctrl">
 <div class="form-group has-feedback"></div>
 <div ng-hide="currentUser.id !== friend.id"> 
-<input type="submit" ng-click="ctrl.getMyFriends()" class="btn btn-danger" value="Get My Friends"/>
+<input type="submit" ng-click="ctrl.getMyFriends()" class="w3-btn w3-yellow w3-border w3-border-red w3-round-xlarge" value="Get My Friends"/>
 </div>
 <div ng-repeat="friend in ctrl.friend | filter: sear_text">
 <div ng-hide="currentUser.id !== friend.id"> 
@@ -20,7 +21,7 @@
 </div>
 </div>  
 </div>
- 
+<div ng-include="friend1.html"> 
 
 </body>
 </html>

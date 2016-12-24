@@ -1,9 +1,9 @@
 'use strict';
-
+/*app.controller('UserController', function(){})*/
 app.controller('FriendController', ['$scope','FriendService','UserService','$location','$rootScope',function($scope,FriendService,UserService,$location, $rootScope){
 	console.log("FriendController...")
 	var ob = this;
-	ob.friend={f_Id:'',id:'',friendId:'',status:''};
+	ob.friend={f_Id:'',id:'',friendId:'',status:'',isOnline:''};
 	ob.friends=[];
 	
 	ob.user = {
@@ -13,8 +13,9 @@ app.controller('FriendController', ['$scope','FriendService','UserService','$loc
 			address : '',
 			mobile : '',
 			role : '',
+			username :'',
 			password :'',
-			errorMessage :'',
+			errorMessage :''
 			};
 	ob.users = [];
 	 
@@ -119,7 +120,7 @@ app.controller('FriendController', ['$scope','FriendService','UserService','$loc
 				);
 	};
 	ob.updateFriendRequest = function(f_Id, friend){
-		FriendService.updateFriendRequest(id, friend)
+		FriendService.updateFriendRequest(f_Id, friend)
 			.then(
 					ob.fetAllFriends,
 					function(errResponse){

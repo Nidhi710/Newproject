@@ -6,59 +6,57 @@ app.config(function($routeProvider){
 	
      .when('/', {
          controller: 'HomeController',
-         templateUrl: 'home.html',
+         templateUrl: 'c_home/home.html',
          
      })
 
      .when('/login', {
          controller: 'UserController',
-         templateUrl: 'login.html',
+         templateUrl:  'c_user/login.html'
          
      })
      
-     .when('/user', {
-         controller: 'UserController',
-         templateUrl: '/user.html',
-         
-     })
      
-
      .when('/blog', {
          controller: 'BlogController',
-         templateUrl: 'blog.html',
+         templateUrl: 'c_blog/blog.html',
+        
+     })
+     .when('/forum', {
+         controller: 'ForumController',
+         templateUrl: 'c_forum/forum.html',
         
      })
      .when('/myProfile', {
 		controller : 'UserController',
-		templateUrl : 'resources/profile.jsp'
+		templateUrl : 'c_user/myProfile.html'
 	})
-     .when('/friend', {
-         controller: 'FriendController',
-         templateUrl: 'friend.html',
-        
-     })
-     .when('/friendrequest', {
-         controller: 'FriendController',
-         templateUrl: 'viewfriend.html',
-        
-     })
+    .when('/friend', {
+		controller : 'FriendController',
+		templateUrl : 'c_friend/viewfriend.html'
+	})
+
+	.when('/friendrequest', {
+		controller : 'FriendController',
+		templateUrl : 'c_friend/friend.html'
+	})
      .when('/userinfo', {
                 controller: 'UserController',
-                templateUrl: 'userinfo.html'
+                templateUrl: 'c_user/userinfo.html'
             })
       .when('/userlist', {
                 controller: 'UserController',
-                templateUrl: 'resources/userlist.jsp'
+                templateUrl: 'c_user/userlisthtml'
             })
      
      .when('/chat', {
          controller: 'ChatController',
-         templateUrl: 'chat.html',
+         templateUrl: 'c_chat/chat.html',
         
      })
      .when('/event', {
          controller: 'EventController',
-         templateUrl: 'event.html',
+         templateUrl: 'c_event/event.html',
         
      })
 

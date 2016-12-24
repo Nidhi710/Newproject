@@ -8,27 +8,27 @@ app.factory('User', ['$resource', function ($resource) {
     );
 }]);
 app.controller('UserController', ['$http','$scope','$cookieStore','User','UserService','$location','$rootScope',function($http,$scope,$cookieStore,User, UserService,$location, $rootScope)  {
-    var self = this;
-    self.user= new User();    
-    self.users=[];         
-    self.fetchAllUsers = function(){
-        self.users = User.query();
-    };
-      
+	var self = this;
+    self.users=[];
+    self.user = new User(); 
+   self.fetchAllUsers = function(){
+          	UserService.fetchAllUsers().then(function(d){
+   				self.users = d;
+   			},function(errResponse){
+   				console.error('Error while fetching users');
+    	});
+    };     
 self.getSelectedUser = myProfile
     
     function myProfile(){
         console.log("MyProfile...")
-    	UserService.myProfile()
-    	.then(
-    			function(d){
-   				self.user = d;
-   				$location.
-   				path("/myProfile");
-   			},function(errResponse){
-   				console.error('Error while fetch profile');
-    	});
-    };
+        UserService.myProfile().then(function(d){
+				self.user = d;
+				$location.path("/myProfile");
+			},function(errResponse){
+				console.error('Error while fetch profile');
+	});
+};
     self.createUser = function(){
         self.user.$save(function(){
         	self.flag= 'created';	
