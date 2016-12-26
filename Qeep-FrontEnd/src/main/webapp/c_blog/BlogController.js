@@ -40,7 +40,14 @@ app.controller('BlogController', ['$scope', 'Blog', function($scope, Blog) {
     		ob.fetchAllBlogs();
            });
 	}
-    };	
+    };
+    ob.viewBlog = function(c_id){
+      	 console.log('Inside view');
+           ob.viewblog = Blog.get({ c_id: c_id}, function() {
+   	       ob.flag = 'view'; 
+   	    });
+           
+      };  
     ob.deleteBlog = function(identity){
         var blog = Blog.get({c_id:identity}, function() {
              blog.$delete(function(){
@@ -48,7 +55,8 @@ app.controller('BlogController', ['$scope', 'Blog', function($scope, Blog) {
                  ob.fetchAllBlogs();
              });
         });
-     };		
+     };	
+     
     ob.reset = function(){
     	ob.blog = new Blog();
         $scope.blogForm.$setPristine();

@@ -53,7 +53,7 @@ app.controller('ForumController', ['$scope', 'Forum', function($scope, Forum) {
     	ob.forum = new Forum();
         $scope.forumForm.$setPristine();
     };	
-    ob.cancelUpdate = function(c_id){
+    ob.cancelUpdate = function(forumId){
 	    ob.forum = new Forum();
 	    ob.flag= '';	
    	    ob.fetchAllForums();

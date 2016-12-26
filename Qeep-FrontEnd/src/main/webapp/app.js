@@ -20,8 +20,13 @@ app.config(function($routeProvider){
      .when('/blog', {
          controller: 'BlogController',
          templateUrl: 'c_blog/blog.html',
+         
         
      })
+     .when('/viewblog', {
+                controller: 'BlogController',
+                templateUrl: 'c_blog/viewblog.html'
+            })
      .when('/forum', {
          controller: 'ForumController',
          templateUrl: 'c_forum/forum.html',
@@ -52,6 +57,30 @@ app.config(function($routeProvider){
      .when('/chat', {
          controller: 'ChatController',
          templateUrl: 'c_chat/chat.html',
+        
+     })
+	.when('/chatforum', {
+		controller : 'ChatForumController',
+		templateUrl : 'c_chatForum/chatforum.html'
+	})
+	.when('/pose_job', {
+         controller: 'JobController',
+         templateUrl: 'c_job/pose_job.html',
+        
+     })
+     .when('/search_job', {
+         controller: 'JobController',
+         templateUrl: 'c_job/search_job.html',
+        
+     })
+     .when('/view-job', {
+         controller: 'JobController',
+         templateUrl: 'c_job/view-job.html',
+        
+     })
+    .when('/view-job-details', {
+         controller: 'JobController',
+         templateUrl: 'c_job/view-job-details.html',
         
      })
      .when('/event', {
