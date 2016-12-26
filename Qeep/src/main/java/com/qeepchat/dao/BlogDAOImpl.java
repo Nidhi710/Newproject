@@ -41,13 +41,14 @@ public class BlogDAOImpl implements BlogDAO {
 	}
 
 
-	public Blog getBlogById(int c_id) {
-		String hql = "from Blog where c_id=" + "'"+ c_id +"'";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+public Blog get(int c_id) {
 		
+		String hql = "from Blog where c_id=" + "'" + c_id + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
 		@SuppressWarnings("unchecked")
 		List<Blog> listBlog = (List<Blog>) query.list();
-		
+
 		if (listBlog != null && !listBlog.isEmpty()) {
 			return listBlog.get(0);
 		}
@@ -56,7 +57,7 @@ public class BlogDAOImpl implements BlogDAO {
 
 
 	public void update(Blog blog) {
-		Blog b = getBlogById(blog.getC_id());
+		Blog b = get(blog.getC_id());
 		b.setC_title(blog.getC_title());
 		b.setC_desc(blog.getC_desc());
 		sessionFactory.getCurrentSession().update(b);
@@ -72,16 +73,15 @@ public class BlogDAOImpl implements BlogDAO {
 	}
   public Blog getView(int c_id) {
 		
-		String hql = "from Product where c_id=" + "'"+ c_id +"'";
+	  String hql = "from Blog where c_id=" + "'" + c_id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		
+
 		@SuppressWarnings("unchecked")
 		List<Blog> listBlog = (List<Blog>) query.list();
-		
+
 		if (listBlog != null && !listBlog.isEmpty()) {
 			return listBlog.get(0);
 		}
-		
 		return null;
 	}
 }

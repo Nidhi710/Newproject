@@ -1,9 +1,12 @@
 package com.qeepchat.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 @Entity
 public class BlogComment {
 	@Id
@@ -11,8 +14,9 @@ public class BlogComment {
 	private int blogCommentId;
 	private int id; //user id
 	private String blogCommentContent;
-	private int c_id; //blog id
-	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "c_id", nullable = false)
+	Blog blog;
 	
 	public int getBlogCommentId() {
 		return blogCommentId;
@@ -32,12 +36,13 @@ public class BlogComment {
 	public void setBlogCommentContent(String blogCommentContent) {
 		this.blogCommentContent = blogCommentContent;
 	}
-	public int getC_id() {
-		return c_id;
+	public Blog getBlog() {
+		return blog;
 	}
-	public void setC_id(int c_id) {
-		this.c_id = c_id;
+	public void setBlog(Blog blog) {
+		this.blog = blog;
 	}
+	
 	
 	
 }

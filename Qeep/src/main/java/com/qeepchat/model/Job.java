@@ -8,59 +8,61 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Job {
-@Id
-@GeneratedValue(strategy=GenerationType.AUTO)
- private int c_id;
-private String c_title;
-private String c_desc;
-private Date c_dateTime;
-private String qualification;
-private char status;
-
-public int getC_id() {
-	return c_id;
-}
-public void setC_id(int c_id) {
-	this.c_id = c_id;
-}
-public String getC_title() {
-	return c_title;
-}
-public void setC_title(String c_title) {
-	this.c_title = c_title;
-}
-public String getC_desc() {
-	return c_desc;
-}
-public void setC_desc(String c_desc) {
-	this.c_desc = c_desc;
-}
-public Date getC_dateTime() {
-	return c_dateTime;
-}
-public void setC_dateTime(Date c_dateTime) {
+public class Job extends BaseDomain{
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int jobId;
+	private String title;
+	private int id;			// USER ID
+	private String description;
+	private Date dateTime;
+	private String qualification;
+	private String status;
 	
-	this.c_dateTime = c_dateTime;
-}
-public String getQualification() {
-	return qualification;
-}
-public void setQualification(String qualification) {
-	this.qualification = qualification;
-}
-public char getStatus() {
-	return status;
-}
-public void setStatus(Character status) {
-	if (status==null){
-		status=new Character ('V');
+	
+	public int getJobId() {
+		return jobId;
 	}
-	this.status = status;
-}
-public Job(){
-	Date d= new Date();
-	c_dateTime=d;
-}
-
+	public void setJobId(int jobId) {
+		this.jobId = jobId;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public Date getDateTime() {
+		return dateTime;
+	}
+	public void setDateTime(Date dateTime) {
+		this.dateTime = dateTime;
+	}
+	public String getQualification() {
+		return qualification;
+	}
+	public void setQualification(String qualification) {
+		this.qualification = qualification;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+	
+	
 }

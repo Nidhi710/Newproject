@@ -35,8 +35,8 @@ public void delete(Integer c_id) {
 	blogDAO.delete(c_id);
 	
 }
-public Blog getBlogById(int c_id){
-	return blogDAO.getBlogById(c_id);
+public Blog get(int c_id){
+	return blogDAO.get(c_id);
 }
 public Blog getView(int c_id){
 	return blogDAO.getView(c_id);

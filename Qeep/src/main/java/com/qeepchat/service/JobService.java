@@ -1,4 +1,4 @@
-/*package com.qeepchat.service;
+package com.qeepchat.service;
 
 import java.util.List;
 
@@ -13,16 +13,36 @@ import com.qeepchat.model.JobApplication;
 @Service
 @Transactional
 public class JobService {
-	@Autowired(required=true)
-JobDAOImpl jobDAO;
+	@Autowired (required=true)
+	JobDAOImpl jobDAO;
 	
+	
+	public boolean save(Job job) {
+		return jobDAO.save(job);
+	}
+	
+	public boolean save(JobApplication jobApplication) {
+		return jobDAO.save(jobApplication);
+	}
+	
+	public List<Job> list() {
+		return jobDAO.list();
+	}
+	
+	public List<JobApplication> listJobApplication() {
+		return jobDAO.listJobApplication();
+	}
+	
+	public Job getJobDetails(int JobId) {
+		return jobDAO.getJobDetails(JobId);
+	}
 	
 	public boolean postJob(Job job) {
 		return jobDAO.postJob(job);
 	}
 	
-	public boolean updateJob(Job job) {
-		return jobDAO.updateJob(job);
+	public boolean update(Job job) {
+		return jobDAO.update(job);
 	}
 	
 	public List<Job> getAllVacantJobs() {
@@ -38,18 +58,20 @@ JobDAOImpl jobDAO;
 	}
 	
 	public boolean updateJobApplication(JobApplication jobApplication) {
-		
 		return jobDAO.updateJobApplication(jobApplication);
 	}
 	
-	public JobApplication get(int id, int c_id) {
-		return jobDAO.get(id, c_id);
+	public JobApplication get(int id, int jobId) {
+		return jobDAO.get(id, jobId);
 	}
 	
 	public JobApplication getMyAppliedJobs(int id) {
 		return jobDAO.getMyAppliedJobs(id);
 	}
-
-
+	
+	public JobApplication getJobApplication(int id) {
+		return jobDAO.getJobApplication(id);
+	}
+	
+	
 }
-*/

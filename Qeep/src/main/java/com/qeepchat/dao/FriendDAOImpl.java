@@ -61,6 +61,7 @@ public class FriendDAOImpl implements FriendDAO{
 	public Friend get(int id, int friendId) {
 	String hql="from Friend where id ='"+id+"' and friendId='"+friendId+"'";
 	Query query =sessionFactory.getCurrentSession().createQuery(hql);
+	@SuppressWarnings("unchecked")
 	List<Friend> list = (List<Friend>) query.list();
 	if(list!=null && !list.isEmpty()){
 		return list.get(0);

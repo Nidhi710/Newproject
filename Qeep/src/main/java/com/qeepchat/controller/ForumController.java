@@ -10,14 +10,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 
 import com.qeepchat.model.Forum;
 
 import com.qeepchat.service.ForumService;
-
+@RestController
 public class ForumController {
+	
 	@Autowired(required=true)
 	ForumService forumService;
 	
@@ -49,7 +51,7 @@ public class ForumController {
 		return new ResponseEntity<List<Forum>>(list, HttpStatus.OK);
 	}
 	@RequestMapping(value="/forum/{forumId}", method = RequestMethod.GET )
-	public ResponseEntity<Forum> getBlogById(@PathVariable("forumId") int forumId) {
+	public ResponseEntity<Forum> getForumById(@PathVariable("forumId") int forumId) {
 		Forum forum = forumService.getForumById(forumId);
 		return new ResponseEntity<Forum>(forum, HttpStatus.OK);
 	}

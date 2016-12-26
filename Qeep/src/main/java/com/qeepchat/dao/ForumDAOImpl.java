@@ -5,8 +5,10 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.qeepchat.model.Forum;
+import org.springframework.stereotype.Repository;
 
+import com.qeepchat.model.Forum;
+@Repository
 public class ForumDAOImpl implements ForumDAO {
 
 	public ForumDAOImpl() {
@@ -60,9 +62,8 @@ public class ForumDAOImpl implements ForumDAO {
 
 	public void delete(int forumId) {
 		Forum ForumToDelete = new Forum();
-		ForumToDelete.getForumId();
+		ForumToDelete.setForumId(forumId);
 		sessionFactory.getCurrentSession().delete(ForumToDelete);
-		
 	}
 
 }

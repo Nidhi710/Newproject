@@ -15,4 +15,7 @@ public interface BlogCommentDAO {
 	List<BlogComment> listBlogComments();
 	
 	List<BlogComment> listBlogByCreatedAt(int c_id);
+	
+		
+	
 }

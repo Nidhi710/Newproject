@@ -33,13 +33,13 @@ public class QeepController {
 	
 	
 	
-	 @RequestMapping("/blogview{c_id}")
+	 /*@RequestMapping("/blogview{c_id}")
 	    public String view(@PathVariable("c_id")int c_id, Model model){
 	    	System.out.println("view");
 	    	model.addAttribute("blog", this.blogService.getBlogById(c_id));
 	    	model.addAttribute("blogdetails", this.blogService.getBlogById(c_id));
 	    	return "viewblog";
-	    }
+	    }*/
 
 	 /*@RequestMapping(value= "/user/add")
 		public String addUser(@ModelAttribute("user") User user ,HttpServletRequest request){

@@ -46,4 +46,6 @@
     <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     <bean id="friend" class="com.qeepchat.model.Friend" ></bean>
-    </beans>
+    <bean id="job" class="com.qeepchat.model.Job" ></bean>
+    <bean id="jobapplication" class="com.qeepchat.model.JobApplication" ></bean>
+        </beans>

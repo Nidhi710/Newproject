@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,8 +52,9 @@ public class BlogController {
 		return new ResponseEntity<List<Blog>>(list, HttpStatus.OK);
 	}
 	@RequestMapping(value="/blog/{c_id}", method = RequestMethod.GET )
-	public ResponseEntity<Blog> getBlogById(@PathVariable("c_id") int c_id) {
-		Blog blog = blogService.getBlogById(c_id);
+	public ResponseEntity<Blog> get(@PathVariable("c_id") int c_id) {
+		Blog blog = blogService.get(c_id);
 		return new ResponseEntity<Blog>(blog, HttpStatus.OK);
 	}
+	 
 }
