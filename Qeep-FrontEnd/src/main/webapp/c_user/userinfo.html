@@ -1,48 +1,55 @@
- 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <title>Insert title here</title>
-
+<style>
+body {
+	background-image:  url("images/2560x1440-peach-crayola-solid-color-background.jpg");
+	/* color: #0000; */
+}
+</style>
 
 </head>
-<body ng-app="myApp">
-<div ng-controller="HomeController as ctrl">
+<body>
+<!-- <div ng-controller="HomeController as ctrl">
 <div ng-hide="currentUser==''">
 <div class="container">
 <div class="row">
 <h3>
-<div class="col-sm-6" style="color:black;">
+<div class="col-sm-6" style="color:brown;">
+<div class="col-sm-12" style="text-align: right;">
 Welcome: {{currentUser.username}}
-</div><br>
-<div class="col-sm-6" style="text-align: right;">
-
 </div>
+</div><br>
+
 </h3>
 </div>
 </div>
 </div>
-</div>
+</div> -->
 <div class="container">
-<div class="row">
-<!-- <div class="col-sm-12" style="text-align: left;"> -->
+<!-- <div class="row"> -->
+<div class="col-sm-12" style="text-align: left;">
 <div ng-controller="UserController as ctr">
 
-<button type="submit" ng-click="ctr.getSelectedUser()" class="w3-btn w3-primary w3-border w3-border-red w3-round-xlarge">My Profile</button>
+
+<button type="submit" ng-click="ctr.getSelectedUser()" class="w3-btn w3-khaki w3-border w3-border-red w3-round-xlarge">My Profile</button>
 </div>
 </div>
 </div>
 </div>
+<hr>
 <div ng-controller="FriendController as ctrl" class="container">
 <div class="form-group has-feedback"></div>
 <div class="row">
-<div class="col-sm-3">
+<!-- <div class="col-sm-3"> -->
+<div class="col-sm-3" style="text-align: right;">
 <p><input type="text" ng-model="sear_text" placeholder="Search the User" class="form-control cols-sm-5"></p>
 </div>
 </div>
-    <table  class="w3-table-all">
+    <table class="table table-hover" >
         <thead>
             <tr>
             	<th>Id</th>
@@ -62,7 +69,7 @@ Welcome: {{currentUser.username}}
 	        	<td><span ng-bind="user.mobile"></span></td>
 	        	<td><span ng-bind="user.address"></span></td>
 	         	<!-- <td><span ng-bind="user.role"></span></td> -->
-                <td><button type="button" ng-click="ctrl.sendFriendRequest(user.id)" class="w3-btn w3-khaki w3-border w3-border-red w3-round-xlarge">Send Friend Request</button></td>
+                <td><button type="button" ng-click="ctrl.sendFriendRequest(user.id)" class="w3-btn w3-white w3-border w3-border-blue w3-round-xlarge">Send Friend Request</button></td>
             </tr>
         </tbody>
     </table>

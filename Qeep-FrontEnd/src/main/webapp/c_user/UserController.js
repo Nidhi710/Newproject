@@ -7,6 +7,21 @@ app.factory('User', ['$resource', function ($resource) {
 	}
     );
 }]);
+app.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+            
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}]);
 app.controller('UserController', ['$http','$scope','$cookieStore','User','UserService','$location','$rootScope',function($http,$scope,$cookieStore,User, UserService,$location, $rootScope)  {
 	var self = this;
     self.users=[];
@@ -22,21 +37,50 @@ self.getSelectedUser = myProfile
     
     function myProfile(){
         console.log("MyProfile...")
-        UserService.myProfile().then(function(d){
+        UserService.myProfile($rootScope.currentUser.id).then(function(d){
 				self.user = d;
+				console.log("User Id ="+self.user.id);
 				$location.path("/myProfile");
 			},function(errResponse){
 				console.error('Error while fetch profile');
 	});
 };
-    self.createUser = function(){
-        self.user.$save(function(){
-        	self.flag= 'created';	
-   	        self.reset();	
-            self.fetchAllUsers();
-        });
-    };
-     
+self.createUser = function()
+{
+var file = $scope.myFile;
+var name=$scope.name;
+var email=$scope.email;
+var address=$scope.address;
+var mobile=$scope.mobile;
+var role=$scope.role;
+var username=$scope.username;
+var password=$scope.password;
+var file = $scope.myFile
+/* console.log('file is ' );
+console.dir(file);*/
+var uploadUrl = "http://localhost:8070/Qeep/user";
+var fd = new FormData();
+fd.append('file', file);
+fd.append('name', name);
+fd.append('email', email);
+fd.append('address', address);
+fd.append('mobile', mobile);
+fd.append('username', username);
+fd.append('password', password);
+
+console.log('Scope of user'+$scope.user);
+$http.post(uploadUrl, fd, {
+transformRequest : angular.identity,
+headers : {
+'Content-Type' : undefined
+}
+}).success(function() {
+console.log('success');
+}).error(function() {
+console.log('error');
+});
+}
+    	
     self.updateUserDetail = function(){
     	console.log('Inside update');
     	if($scope.userForm.$valid) {

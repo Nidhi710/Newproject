@@ -28,7 +28,14 @@ app.controller('ForumController', ['$scope', 'Forum', function($scope, Forum) {
 	       ob.flag = 'edit'; 
 	    });
         
-   };    
+   }; 
+   ob.viewForum = function(forumId){
+    	 console.log('Inside view');
+         ob.viewforum = Forum.get({ forumId: forumId}, function() {
+ 	       ob.flag = 'view'; 
+ 	    });
+         
+    };
     ob.updateForumDetail = function(){
 	console.log('Inside update');
 	if($scope.forumForm.$valid) {

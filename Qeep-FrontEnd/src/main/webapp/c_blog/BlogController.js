@@ -43,7 +43,7 @@ app.controller('BlogController', ['$scope', 'Blog', function($scope, Blog) {
     };
     ob.viewBlog = function(c_id){
       	 console.log('Inside view');
-           ob.viewblog = Blog.get({ c_id: c_id}, function() {
+           ob.viewblogs = Blog.get({ c_id: c_id}, function() {
    	       ob.flag = 'view'; 
    	    });
            

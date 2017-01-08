@@ -1,9 +1,9 @@
 'use strict';
-/*app.controller('UserController', function(){})*/
+
 app.controller('FriendController', ['$scope','FriendService','UserService','$location','$rootScope',function($scope,FriendService,UserService,$location, $rootScope){
 	console.log("FriendController...")
 	var ob = this;
-	ob.friend={f_Id:'',id:'',friendId:'',status:'',isOnline:''};
+	ob.friend={fId:'',id:'',friendId:'',status:''};
 	ob.friends=[];
 	
 	ob.user = {
@@ -13,9 +13,8 @@ app.controller('FriendController', ['$scope','FriendService','UserService','$loc
 			address : '',
 			mobile : '',
 			role : '',
-			username :'',
 			password :'',
-			errorMessage :''
+			errorMessage :'',
 			};
 	ob.users = [];
 	 
@@ -119,8 +118,8 @@ app.controller('FriendController', ['$scope','FriendService','UserService','$loc
 		   			}	
 				);
 	};
-	ob.updateFriendRequest = function(f_Id, friend){
-		FriendService.updateFriendRequest(f_Id, friend)
+	ob.updateFriendRequest = function(fId, friend){
+		FriendService.updateFriendRequest(id, friend)
 			.then(
 					ob.fetAllFriends,
 					function(errResponse){
@@ -128,8 +127,8 @@ app.controller('FriendController', ['$scope','FriendService','UserService','$loc
 					}
 				);
 	};
-	ob.deleteFriend = function(f_Id){
-		FriendService.deleteFriend(f_Id)
+	ob.deleteFriend = function(fId){
+		FriendService.deleteFriend(fId)
 			.then(
 					ob.fetAllFriends,
 					function(errResponse){

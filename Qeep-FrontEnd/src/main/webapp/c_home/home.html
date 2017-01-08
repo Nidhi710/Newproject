@@ -3,6 +3,7 @@
 <html >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"> 
 <title>Insert title here</title>
 </head>
  <style>
@@ -23,25 +24,25 @@
  
 
 <div id="section0" class="container-fluid">
-  <div ng-controller="HomeController as ctrl">
+ <div ng-controller="HomeController as ctrl">
 <div ng-hide="currentUser==''">
 <div class="container">
 <div class="row">
 <h3>
-<div class="col-sm-6" style="color:brown;">
+<div class="col-sm-3" style="text-align: left;">
 Welcome: {{currentUser.username}}
-</div><br>
-<div class="col-sm-6" style="text-align: right;">
+</div></h3>
 
-</div>
-</h3>
-</div>
-</div>
-</div>
-</div>
 <div ng-controller="UserController as ctr">
-<input type="submit" class="w3-btn  w3-deep-purple w3-border w3-border-blue w3-round-xlarge"  ng-click="ctr.getSelectedUser()" value="My Profile"/>
+<div  style="text-align: right;">
+<input type="submit" class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"  ng-click="ctr.getSelectedUser()" value="My Profile"/>
 </div>
+</div>
+</div>
+</div>
+</div>
+
+
   </div> 
   
 </div>

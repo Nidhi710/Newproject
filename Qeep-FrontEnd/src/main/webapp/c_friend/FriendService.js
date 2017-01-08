@@ -89,8 +89,8 @@ return{
 					}			
 				);
 	},
-	updateFriendRequest: function(f_Id, friend){
-		return $http.put(BASE_URL+'/friend/'+f_Id, friend)
+	updateFriendRequest: function(id, friend){
+		return $http.put(BASE_URL+'/friend/'+fId, friend)
 			.then(
 					function(response){
 						return response.data;
@@ -101,8 +101,8 @@ return{
 						}			
 					);
 	},
-	deleteFriend: function(f_Id){
-		return $http.delete(BASE_URL+'/friend/'+f_Id)
+	deleteFriend: function(fId){
+		return $http.delete(BASE_URL+'/friend/'+fId)
 			.then(
 					function(response){
 						return response.data;

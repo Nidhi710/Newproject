@@ -5,7 +5,7 @@
    {
 	console.log("JobService....")
 	
-	var BASE_URL="http://localhost:8080/zeedle_backend";
+	var BASE_URL="http://localhost:8070/Qeep";
 		return{
 		
 		applyForJob: function(jobID) {

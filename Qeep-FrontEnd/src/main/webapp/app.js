@@ -9,6 +9,11 @@ app.config(function($routeProvider){
          templateUrl: 'c_home/home.html',
          
      })
+     .when('/aboutus', {
+		controller : 'UserController',
+		templateUrl : 'c_aboutus/aboutus.html'
+
+	})
 
      .when('/login', {
          controller: 'UserController',
@@ -18,17 +23,20 @@ app.config(function($routeProvider){
      
      
      .when('/blog', {
+    	 
          controller: 'BlogController',
+         controller: 'BlogCommentController',
+         controller: 'BlogLikeController',
          templateUrl: 'c_blog/blog.html',
          
         
      })
-     .when('/viewblog', {
-                controller: 'BlogController',
-                templateUrl: 'c_blog/viewblog.html'
-            })
+     
+     
      .when('/forum', {
          controller: 'ForumController',
+         controller: 'ForumCommentController',
+         controller: 'ForumLikeController',
          templateUrl: 'c_forum/forum.html',
         
      })
@@ -92,41 +100,37 @@ app.config(function($routeProvider){
      
      .otherwise({ redirectTo: '/' });
 })
-app.run( function ($rootScope, $location,$cookieStore, $http){ 
-	
-	$rootScope.$on('$locationChangeStart', function (event, next, current) {
-        // redirect to login page if not logged in and trying to access a restricted page
-        var restrictedPage = $.inArray($location.path(), ['/login','/bloglist']) === -1;
-        console.log("restrictedPage:" +restrictedPage)
-        var loggedIn = $rootScope.currentUser.id;
-        console.log("loggedIn:" +loggedIn)
-        if(!loggedIn)
-        	{
-        		if (restrictedPage) {
-        			console.log("Navigating to login page")
-        			$location.path('/login');
-        		}
-        	}
-        else
-        	{
-        		var role= $rootScope.currentUser.role;
-        		var userRestrictedPage=  $.inArray($location.path(), ['/userlist']) == 0;
-        		
-        		if(userRestrictedPage && role!='admin')
-        			{
-        				alert("You can not do this operation as you are logged as :" + role);
-        				$location.path('/');
-        			}
-        	}
-        
-    });
+app.run(function($rootScope, $location, $cookieStore, $http) {
 
+	$rootScope.$on('$locationChangeStart', function(event, next, current) {
+		// redirect to login page if not logged in and trying to access a restricted page
+		var restrictedPage = $.inArray($location.path(), [ '/login','/blogList','/aboutus' ]) === -1;
+		console.log("restrictedPage:" + restrictedPage)
+		var loggedIn = $rootScope.currentUser.id;
+		console.log("loggedIn:" + loggedIn)
+		if (!loggedIn) {
+			if (restrictedPage) {
+				console.log("Navigating to login page")
+				$location.path('/login');
+			}
+		} else {
+			var role = $rootScope.currentUser.role;
+			var userRestrictedPage = $.inArray($location.path(),
+					[ '/userlist' ]) == 0;
 
-// KEEP USER LOGGED IN AFTER PAGE REFRESH
+			if (userRestrictedPage && role != 'admin') {
+				alert("You can not do this operation as you are logged as :"
+						+ role);
+				$location.path('/');
+			}
+		}
 
-$rootScope.currentUser=$cookieStore.get('CurrentUser') || {};
-if($rootScope.currentUser){
-	
-	$http.defaults.headers.common['Authorization']='Basic'+ $rootScope.currentUser;
-}
+	});
+
+	// keep user logged in after page refresh
+	$rootScope.currentUser = $cookieStore.get('currentUser') || {};
+	if ($rootScope.currentUser) {
+		$http.defaults.headers.common['Authorization'] = 'Basic '
+				+ $rootScope.currentUser;
+	}
 });
