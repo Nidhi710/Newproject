@@ -2,6 +2,8 @@ package com.qeepchat.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-
+import com.qeepchat.model.Blog;
 import com.qeepchat.model.Forum;
 
 import com.qeepchat.service.ForumService;
@@ -51,8 +53,17 @@ public class ForumController {
 		return new ResponseEntity<List<Forum>>(list, HttpStatus.OK);
 	}
 	@RequestMapping(value="/forum/{forumId}", method = RequestMethod.GET )
-	public ResponseEntity<Forum> getForumById(@PathVariable("forumId") int forumId) {
+	public ResponseEntity<Forum> getForumById(@PathVariable("forumId") int forumId,HttpSession session) 
+	{
 		Forum forum = forumService.getForumById(forumId);
+		session.setAttribute("fId",forum.getForumId());
 		return new ResponseEntity<Forum>(forum, HttpStatus.OK);
 	}
+	/*@RequestMapping(value="/forum/{forumId}", method = RequestMethod.GET )
+	public ResponseEntity<Forum> get(@PathVariable("forumId") int forumId, HttpSession session)
+	{
+		Forum forum = forumService.getForumById(forumId);
+		session.setAttribute("fId",forumId.);
+		return new ResponseEntity<Forum>(forum, HttpStatus.OK);
+	}*/
 }

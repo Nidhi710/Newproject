@@ -6,6 +6,8 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.qeepchat.model.Blog;
 import com.qeepchat.model.BlogComment;
 
 @Repository
@@ -22,9 +24,9 @@ public class BlogCommentDAOImpl implements BlogCommentDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
-	public void saveOrUpdateBlogComment(BlogComment blogComment) {
-		sessionFactory.getCurrentSession().saveOrUpdate(blogComment);
-
+	public boolean addBlogComment(BlogComment blogComment) {
+		sessionFactory.getCurrentSession().save(blogComment);
+		return false;
 	}
 
 	
@@ -36,17 +38,20 @@ public class BlogCommentDAOImpl implements BlogCommentDAO {
 	}
 
 	
-	public BlogComment getBlogComment(int blogCommentId) {
-		String hql = "from BlogComment where blogCommentId=:blogCommentId";
+public BlogComment getBlogComment(int blogCommentId) {
+		
+		String hql = "from BlogComment where blogCommentId=" + "'" + blogCommentId + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		
+
 		@SuppressWarnings("unchecked")
-		List<BlogComment> gotBlogComment = (List<BlogComment>) query.list();
-		
-		if (gotBlogComment != null && !gotBlogComment.isEmpty())
-			return gotBlogComment.get(0);
+		List<BlogComment> listBlogComment = (List<BlogComment>) query.list();
+
+		if (listBlogComment != null && !listBlogComment.isEmpty()) {
+			return listBlogComment.get(0);
+		}
 		return null;
 	}
+
 	
 	@SuppressWarnings("unchecked")
 	public List<BlogComment> listBlogComments() {
@@ -64,5 +69,7 @@ public class BlogCommentDAOImpl implements BlogCommentDAO {
 		List<BlogComment> listOfBlogComments = query.list();
 		return listOfBlogComments;
 	}
+
+	
 
 }

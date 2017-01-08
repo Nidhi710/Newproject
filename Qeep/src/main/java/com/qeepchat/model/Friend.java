@@ -8,19 +8,19 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="C_Friend")
-public class Friend extends BaseDomain {
+public class Friend extends BaseDomain{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int f_Id;
-	private int id;
+	private int fId;
+	private int id;   // THIS IS USER ID FOR REFERENCE
 	private int friendId;
 	private String status;
 	private char isOnline;
-	public int getF_Id() {
-		return f_Id;
+	public int getfId() {
+		return fId;
 	}
-	public void setF_Id(int f_Id) {
-		this.f_Id = f_Id;
+	public void setfId(int fId) {
+		this.fId = fId;
 	}
 	public int getId() {
 		return id;
@@ -46,6 +46,5 @@ public class Friend extends BaseDomain {
 	public void setIsOnline(char isOnline) {
 		this.isOnline = isOnline;
 	}
-
-	
+			
 }

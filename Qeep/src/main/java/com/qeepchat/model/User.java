@@ -23,15 +23,15 @@ public class User extends BaseDomain {
 	private String password;
 	/*private char isOnline;*/
 	@Transient
-	private MultipartFile img;
+	private MultipartFile image;
 	
+		
 	
-	
-	public MultipartFile getImg() {
-		return img;
+	public MultipartFile getImage() {
+		return image;
 	}
-	public void setImg(MultipartFile img) {
-		this.img = img;
+	public void setImage(MultipartFile image) {
+		this.image = image;
 	}
 	public int getId() {
 		return id;

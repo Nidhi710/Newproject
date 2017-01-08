@@ -23,8 +23,8 @@ public class FriendService {
 		return friendDAO.update(friend);
 	}
 	
-	public void delete(int id, int f_Id) {
-		friendDAO.delete(id, f_Id);
+	public void delete(int id, int fId) {
+		friendDAO.delete(id, fId);
 	}
 	
 	public Friend get(int id, int  friendId) {

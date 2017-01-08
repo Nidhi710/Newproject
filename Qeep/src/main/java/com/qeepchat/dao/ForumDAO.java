@@ -14,4 +14,5 @@ public interface ForumDAO {
 	void update(Forum forum);
 	
     void delete(int forumId);
+    public Forum getView(int forumId);
 }

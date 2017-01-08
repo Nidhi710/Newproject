@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qeepchat.dao.BlogCommentDAOImpl;
+import com.qeepchat.model.Blog;
 import com.qeepchat.model.BlogComment;
 
 @Service
@@ -15,9 +16,10 @@ public class BlogCommentService {
 	@Autowired(required=true)
 	BlogCommentDAOImpl blogCommentDAO;
 	
-	public void saveOrUpdateBlogComment(BlogComment blogComment){
-		blogCommentDAO.saveOrUpdateBlogComment(blogComment);
-	}
+	public boolean addBlogComment(BlogComment blogComment){
+	     blogCommentDAO.addBlogComment(blogComment);
+        return true; 
+}
 	
 	public void deleteBlogComment(int blogCommentId){
 		blogCommentDAO.deleteBlogComment(blogCommentId);
@@ -27,7 +29,7 @@ public class BlogCommentService {
 		return blogCommentDAO.getBlogComment(blogCommentId);
 	}
 	
-	public List<BlogComment> listBlogComments(){
+	public List<BlogComment> listBlogComments(int c_id){
 		return blogCommentDAO.listBlogComments();
 	}
 	public List<BlogComment> listBlogByCreatedAt(int c_id){

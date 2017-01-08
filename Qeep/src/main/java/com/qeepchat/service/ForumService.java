@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qeepchat.dao.ForumDAOImpl;
+import com.qeepchat.model.Blog;
 import com.qeepchat.model.Forum;
 @Service
 @Transactional
@@ -37,4 +38,8 @@ public Forum getForumById(int forumId){
 	return forumDAO.getForumById(forumId); 
 	
 }
+public Forum getView(int forumId){
+	return forumDAO.getView(forumId);
+}
+
 }

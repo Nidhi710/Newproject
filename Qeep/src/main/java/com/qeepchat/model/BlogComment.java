@@ -8,15 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 @Entity
-public class BlogComment {
+public class BlogComment extends BaseDomain {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int blogCommentId;
 	private int id; //user id
+	private int c_id;
 	private String blogCommentContent;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "c_id", nullable = false)
-	Blog blog;
+	
+
 	
 	public int getBlogCommentId() {
 		return blogCommentId;
@@ -36,12 +36,15 @@ public class BlogComment {
 	public void setBlogCommentContent(String blogCommentContent) {
 		this.blogCommentContent = blogCommentContent;
 	}
-	public Blog getBlog() {
-		return blog;
+	
+	public int getC_id() {
+		return c_id;
 	}
-	public void setBlog(Blog blog) {
-		this.blog = blog;
+	public void setC_id(int c_id) {
+		this.c_id = c_id;
 	}
+	
+	
 	
 	
 	

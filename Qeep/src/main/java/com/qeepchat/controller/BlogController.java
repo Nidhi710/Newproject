@@ -2,6 +2,8 @@ package com.qeepchat.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -52,8 +54,10 @@ public class BlogController {
 		return new ResponseEntity<List<Blog>>(list, HttpStatus.OK);
 	}
 	@RequestMapping(value="/blog/{c_id}", method = RequestMethod.GET )
-	public ResponseEntity<Blog> get(@PathVariable("c_id") int c_id) {
+	public ResponseEntity<Blog> get(@PathVariable("c_id") int c_id, HttpSession session)
+	{
 		Blog blog = blogService.get(c_id);
+		session.setAttribute("bId",blog.getC_id());
 		return new ResponseEntity<Blog>(blog, HttpStatus.OK);
 	}
 	 

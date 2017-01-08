@@ -6,7 +6,7 @@ import com.qeepchat.model.BlogComment;
 
 public interface BlogCommentDAO {
 
-	void saveOrUpdateBlogComment(BlogComment blogComment);
+	public boolean addBlogComment(BlogComment blogComment);
 
 	void deleteBlogComment(int blogCommentId);
 
